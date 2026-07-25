@@ -1,0 +1,22 @@
+.DS_Store
+
+# Font source folders (not needed in production, index.html uses fonts/*.woff2 subsets + Google Fonts)
+/Arimo/
+/breathing/
+/breathing 2/
+/glacial-indifference/
+
+# Original TTF/OTF sources kept locally, only the woff2 subsets ship to production
+fonts/*.ttf
+fonts/*.otf
+
+# Original full-resolution photo, only the optimized web version ships
+assets/hero-photo.jpg
+
+# Unused legacy logo (replaced by laura-najar-icon-mark.png)
+assets/logo.png
+
+# Internal project docs, not for the public site repo
+spec.md
+roadmap.md
+resumen-proyecto.md

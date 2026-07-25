@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura Najar — Fisioterapia Pélvica y Rehabilitación a Domicilio</title>
+<meta name="description" content="Fisioterapia de piso pélvico y rehabilitación a domicilio en Bogotá (zona Occidente y Centro). Agenda tu cita por WhatsApp.">
+
+<!-- GA4: reemplazar G-XXXXXXXXXX por el ID real de Laura -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Fonts ---------- */
+  /* Arimo se carga desde Google Fonts (arriba). Glacial Indifference Bold y Breathing son fuentes
+     de marca sin CDN público, por eso van auto-hospedadas como subset .woff2 (solo los glifos usados). */
+  @font-face{font-family:"Glacial Indifference";src:url("fonts/GlacialIndifference-Bold-subset.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap;}
+  @font-face{font-family:"Breathing";src:url("fonts/Breathing-subset.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;}
+
+  :root{
+    /* base palette */
+    --purple-700:#7365A6;
+    --purple-600:#8577B3;
+    --slate-600:#6D6F8C;
+    --slate-500:#82849D;
+    --slate-300:#B7B8C8;
+    --pink-300:#F5B0F0;
+    --pink-200:#F8CCF4;
+    --peach-300:#F2CCB6;
+    --peach-200:#F7DFCF;
+    --terracotta-500:#BF8D7A;
+    --terracotta-600:#A9765F;
+    --cream-50:#FFFBF6;
+    --cream-100:#FBF3EA;
+    --ink-900:#3E3B4D;
+    --ink-700:#57546A;
+    --white:#FFFFFF;
+
+    /* semantic aliases */
+    --color-bg-page:var(--cream-50);
+    --color-text-primary:var(--ink-900);
+    --color-text-secondary:var(--ink-700);
+    --color-text-on-brand:var(--cream-50);
+    --color-text-link:var(--purple-700);
+    --color-text-link-hover:var(--terracotta-600);
+    --color-border-subtle:#EADFD3;
+    --color-border-brand:var(--slate-600);
+    --color-accent-primary:var(--slate-600);
+
+    /* type */
+    --font-display:"Glacial Indifference","Century Gothic",sans-serif;
+    --font-body:"Arimo","Helvetica Neue",Arial,sans-serif;
+    --font-script:"Breathing",cursive;
+
+    --text-base:1rem;
+    --text-md:1.125rem;
+    --text-3xl:2.875rem;
+    --text-4xl:3.5rem;
+    --text-5xl:4.5rem;
+
+    --leading-tight:1.1;
+    --leading-normal:1.55;
+    --leading-relaxed:1.75;
+    --tracking-tight:-0.01em;
+    --tracking-caps:.18em;
+
+    /* spacing / radius / shadow */
+    --radius-md:12px;
+    --radius-lg:20px;
+    --radius-xl:32px;
+    --radius-pill:999px;
+    --shadow-sm:0 1px 2px rgba(62,59,77,.06);
+    --shadow-md:0 8px 24px rgba(62,59,77,.10);
+    --shadow-lg:0 16px 48px rgba(62,59,77,.14);
+    --container-max:1180px;
+    --ease-standard:cubic-bezier(.4,0,.2,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--font-body);color:var(--color-text-primary);background:var(--color-bg-page);font-size:var(--text-base);line-height:var(--leading-normal);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;margin:0;letter-spacing:var(--tracking-tight);color:var(--color-text-primary)}
+  p{margin:0}
+  a{color:var(--color-text-link);text-decoration:none}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--container-max); margin:0 auto;}
+  .eyebrow{font-family:var(--font-display); font-size:13px; letter-spacing:var(--tracking-caps); text-transform:uppercase; color:var(--color-accent-primary); font-weight:700;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    padding:16px clamp(20px,5vw,48px);
+    background:rgba(255,251,246,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--color-border-subtle);
+    flex-wrap:wrap;
+  }
+  .nav-logo{display:flex; align-items:center; gap:10px;}
+  .nav-logo img{height:46px; width:auto;}
+  .nav-logo span{font-family:var(--font-script); font-weight:400; font-size:26px; color:var(--ink-900);}
+  .nav-links{display:flex; align-items:center; gap:clamp(16px,3vw,32px); flex-wrap:wrap;}
+  .nav-link{font-family:var(--font-display); font-weight:700; font-size:15px; color:var(--color-text-secondary); transition:color var(--ease-standard) .2s;}
+  .nav-link:hover{color:var(--color-accent-primary);}
+
+  @media(max-width:640px){
+    header{flex-direction:column; justify-content:center;}
+    .nav-logo{justify-content:center; width:100%;}
+    .nav-links{justify-content:center; width:100%;}
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--font-display); font-weight:700;
+    border-radius:var(--radius-pill);
+    transition:background .2s var(--ease-standard), transform .2s var(--ease-standard), box-shadow .2s var(--ease-standard);
+  }
+  .btn-primary{background:var(--color-accent-primary); color:var(--color-text-on-brand); font-size:var(--text-md); padding:14px 30px; box-shadow:var(--shadow-md);}
+  .btn-primary:hover{background:var(--purple-700); color:var(--color-text-on-brand); transform:translateY(-1px);}
+  .btn-primary.small{font-size:14px; padding:10px 20px; box-shadow:none;}
+  .btn-ghost{background:transparent; color:var(--color-accent-primary); border:1px solid var(--color-border-brand); font-size:14px; padding:11px 22px;}
+  .btn-ghost:hover{background:var(--cream-100);}
+  .btn-cream{background:var(--cream-50); color:var(--purple-700); font-size:var(--text-md); padding:14px 30px;}
+  .btn-cream:hover{background:var(--peach-300);}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; padding:clamp(48px,8vw,88px) clamp(20px,5vw,48px) clamp(56px,8vw,88px); overflow:hidden;}
+  .hero-blob{position:absolute; border-radius:50%; z-index:0;}
+  .hero-blob.b1{width:420px; height:420px; background:var(--pink-200); opacity:.45; top:-160px; right:-140px;}
+  .hero-blob.b2{width:260px; height:260px; background:var(--peach-200); opacity:.55; bottom:-100px; left:-100px;}
+  .hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:56px; align-items:center;}
+  .hero h1{font-size:clamp(2.2rem, 4.2vw, var(--text-5xl)); line-height:var(--leading-tight); margin:18px 0 20px;}
+  .hero h1 .accent{color:var(--terracotta-600);}
+  .hero .lead{font-size:var(--text-md); color:var(--color-text-secondary); line-height:var(--leading-relaxed); max-width:460px; margin-bottom:32px;}
+  .hero-ctas{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:36px;}
+  .hero-ctas .note{font-size:14px; color:var(--color-text-secondary); font-style:italic;}
+  .trust-row{display:flex; flex-wrap:wrap; gap:24px;}
+  .trust-item{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-900); font-weight:700; font-family:var(--font-display);}
+  .trust-item svg{color:var(--terracotta-500);}
+
+  .hero-photo{position:relative;}
+  .hero-photo-slot{
+    width:100%; aspect-ratio:4/5; border-radius:32px; border:1px solid var(--color-border-subtle);
+    object-fit:cover; display:block;
+  }
+  .hero-badge{
+    position:absolute; left:20px; right:20px; bottom:20px;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(4px);
+    border-radius:var(--radius-md); padding:16px 18px; font-size:14px; color:var(--ink-900); box-shadow:var(--shadow-md);
+  }
+  .hero-badge strong{font-family:var(--font-display); color:var(--ink-900);}
+
+  /* ---------- Value strip ---------- */
+  .value-strip{background:var(--slate-600); padding:44px clamp(20px,5vw,48px);}
+  .value-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:28px; text-align:center;}
+  .value-item svg{color:var(--peach-300); margin:0 auto 12px; display:block;}
+  .value-item h3{font-size:17px; color:var(--cream-50); margin-bottom:6px;}
+  .value-item p{font-size:14px; color:rgba(255,251,246,0.75); margin:0;}
+
+  /* ---------- Section headings ---------- */
+  section{padding:clamp(56px,8vw,88px) clamp(20px,5vw,48px);}
+  .section-head{text-align:center; max-width:600px; margin:0 auto 48px;}
+  .section-head h2{font-size:clamp(1.8rem, 3vw, var(--text-3xl)); margin-top:12px;}
+  .section-head p{color:var(--color-text-secondary); margin-top:14px; font-size:var(--text-base);}
+
+  /* ---------- Servicios ---------- */
+  .servicios-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;}
+  .servicio-card{border-radius:var(--radius-lg); border:1px solid var(--color-border-subtle); box-shadow:var(--shadow-sm); padding:24px; transition:box-shadow .2s var(--ease-standard);}
+  .servicio-card:hover{box-shadow:var(--shadow-md);}
+  .servicio-icon{width:52px; height:52px; border-radius:var(--radius-md); background:var(--cream-50); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+  .servicio-card h3{font-size:17px; margin-bottom:8px;}
+  .servicio-card p{font-size:14px; line-height:var(--leading-normal); margin:0;}
+  .servicio-card.dark h3, .servicio-card.dark p{color:var(--cream-50);}
+  .servicio-card.dark p{color:rgba(255,251,246,0.85);}
+  .servicio-card.light h3{color:var(--ink-900);}
+  .servicio-card.light p{color:var(--ink-700);}
+
+  /* ---------- Cómo funciona ---------- */
+  .como-funciona{background:var(--cream-100);}
+  .pasos-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:36px;}
+  .paso{text-align:center; padding:0 14px;}
+  .paso-num{width:46px; height:46px; border-radius:50%; background:var(--slate-600); color:var(--cream-50); font-family:var(--font-display); font-weight:700; font-size:19px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;}
+  .paso h3{font-size:16px; margin-bottom:8px;}
+  .paso p{font-size:14px; color:var(--color-text-secondary); margin:0;}
+
+  /* ---------- Cobertura ---------- */
+  .cobertura-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; align-items:center;}
+  .cobertura-visual{background:var(--pink-200); border-radius:var(--radius-xl); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;}
+  .cobertura-visual svg{color:var(--purple-700); opacity:.55;}
+  .cobertura-text h2{font-size:clamp(1.7rem, 2.8vw, var(--text-3xl)); margin:14px 0 16px;}
+  .cobertura-text p{color:var(--color-text-secondary); margin-bottom:24px; font-size:var(--text-base); line-height:var(--leading-relaxed);}
+  .zona-tags{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;}
+  .zona-tag{background:var(--peach-200); color:var(--terracotta-600); padding:8px 18px; border-radius:var(--radius-pill); font-size:14px; font-weight:700; font-family:var(--font-display);}
+
+  /* ---------- CTA final ---------- */
+  .cta-final{padding:0 clamp(20px,5vw,48px) clamp(56px,8vw,88px);}
+  .cta-box{background:var(--purple-700); border-radius:var(--radius-xl); text-align:center; color:var(--cream-50); padding:clamp(56px,8vw,80px) 24px;}
+  .cta-box .script{font-family:var(--font-script); font-weight:400; font-size:32px; color:var(--peach-300); display:block; margin-bottom:8px;}
+  .cta-box h2{font-size:clamp(1.9rem, 3.5vw, var(--text-4xl)); color:var(--cream-50); margin-bottom:16px;}
+  .cta-box p{color:rgba(255,251,246,0.82); max-width:460px; margin:0 auto 32px; font-size:var(--text-base); line-height:var(--leading-relaxed);}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--slate-600); color:rgba(255,251,246,0.75); padding:clamp(40px,6vw,56px) clamp(20px,5vw,48px) 28px; font-size:14px;}
+  .footer-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:32px; padding-bottom:24px; border-bottom:1px solid rgba(255,251,246,0.18); margin-bottom:22px;}
+  .footer-brand{font-family:var(--font-script); font-weight:400; font-size:30px; color:var(--cream-50); margin-bottom:8px;}
+  .footer-tag{font-style:italic; font-size:14px; color:rgba(255,251,246,0.65); max-width:260px; margin:0;}
+  .footer-col-title{font-family:var(--font-display); font-size:13px; letter-spacing:var(--tracking-caps); text-transform:uppercase; margin-bottom:14px; opacity:0.8;}
+  .footer-contact-row{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+  .footer-links{display:flex; flex-direction:column; gap:10px;}
+  .footer-links a{color:rgba(255,251,246,0.85);}
+  .footer-bottom{display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; font-size:12px; color:rgba(255,251,246,0.55);}
+
+  /* ---------- WhatsApp flotante ---------- */
+  .wa-float{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    width:58px; height:58px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg);
+    transition:transform .2s var(--ease-standard);
+  }
+  .wa-float:hover{transform:scale(1.06);}
+  .wa-float svg{color:white;}
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#top" class="nav-logo">
+      <img src="assets/laura-najar-icon-mark.png" alt="Laura Najar">
+      <span>Laura Najar</span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#cobertura" class="nav-link">Cobertura</a>
+      <a href="https://www.instagram.com/fisioterapeutalauranajar" target="_blank" rel="noopener" aria-label="Instagram" class="nav-link">
+        <i data-lucide="instagram" width="20" height="20"></i>
+      </a>
+      <a href="https://wa.me/573216798612?text=Hola%20Laura%2C%20quiero%20agendar%20una%20cita%20contigo%20y%20te%20dejo%20una%20imagen%20con%20los%20servicios" target="_blank" rel="noopener" class="btn btn-primary small">
+        <i data-lucide="message-circle" width="16" height="16"></i>
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob b1"></div>
+    <div class="hero-blob b2"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">— Fisioterapia pélvica y rehabilitación —</span>
+        <h1>Tu bienestar es movimiento, <span class="accent">yo te acompaño</span> a lograrlo.</h1>
+        <p class="lead">Fisioterapia de piso pélvico y rehabilitación física a domicilio, en la comodidad de tu casa.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/573216798612?text=Hola%20Laura%2C%20quiero%20agendar%20una%20cita%20contigo%20y%20te%20dejo%20una%20imagen%20con%20los%20servicios" target="_blank" rel="noopener" class="btn btn-primary">
+            <i data-lucide="message-circle" width="20" height="20"></i>
+            Escríbeme por WhatsApp
+          </a>
+          <span class="note">Respondo lo antes posible</span>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item"><i data-lucide="ear" width="18" height="18"></i> Escucha activa</div>
+          <div class="trust-item"><i data-lucide="check-circle" width="18" height="18"></i> Tratamientos efectivos</div>
+          <div class="trust-item"><i data-lucide="heart-handshake" width="18" height="18"></i> Cuidado integral</div>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="assets/hero-photo-web.jpg" alt="Sesión de fisioterapia a domicilio" class="hero-photo-slot">
+        <div class="hero-badge">
+          <strong>Atención domiciliaria</strong> personalizada, con enfoque humano y profesional.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE STRIP -->
+  <section class="value-strip" style="padding:44px clamp(20px,5vw,48px);">
+    <div class="wrap value-grid">
+      <div class="value-item">
+        <i data-lucide="home" width="30" height="30"></i>
+        <h3>Atención a domicilio</h3>
+        <p>Tu sesión, en la comodidad y privacidad de tu casa.</p>
+      </div>
+      <div class="value-item">
+        <i data-lucide="award" width="30" height="30"></i>
+        <h3>Profesional certificada</h3>
+        <p>Especializada en piso pélvico y rehabilitación integral</p>
+      </div>
+      <div class="value-item">
+        <i data-lucide="smile" width="30" height="30"></i>
+        <h3>Trato cercano</h3>
+        <p>Un espacio de confianza para hablar de tu cuerpo sin pena.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">— Mis servicios —</span>
+        <h2>Cómo puedo acompañarte</h2>
+        <p>Seis áreas de trabajo, siempre adaptadas a tu momento y a tu cuerpo.</p>
+      </div>
+
+      <div class="servicios-grid">
+
+        <div class="servicio-card dark" style="background:var(--purple-700);">
+          <div class="servicio-icon"><i data-lucide="heart-pulse" width="26" height="26" style="color:var(--purple-700);"></i></div>
+          <h3>Fisioterapia del suelo pélvico</h3>
+          <p>Incontinencia, dolor pélvico y disfunciones del piso pélvico, tratadas con cercanía y sin tabúes.</p>
+        </div>
+
+        <div class="servicio-card dark" style="background:var(--terracotta-600);">
+          <div class="servicio-icon"><i data-lucide="baby" width="26" height="26" style="color:var(--terracotta-600);"></i></div>
+          <h3>Acompañamiento en embarazo y posparto</h3>
+          <p>Preparación del cuerpo durante el embarazo y recuperación gradual después del parto.</p>
+        </div>
+
+        <div class="servicio-card dark" style="background:var(--slate-600);">
+          <div class="servicio-icon"><i data-lucide="dumbbell" width="26" height="26" style="color:var(--slate-600);"></i></div>
+          <h3>Diástasis abdominal y fortalecimiento del core</h3>
+          <p>Recupera la funcionalidad de tu abdomen con un trabajo progresivo y seguro.</p>
+        </div>
+
+        <div class="servicio-card light" style="background:var(--pink-300);">
+          <div class="servicio-icon"><i data-lucide="activity" width="26" height="26" style="color:var(--purple-700);"></i></div>
+          <h3>Dolor lumbar y de espalda</h3>
+          <p>Alivio y manejo del dolor con técnicas manuales y ejercicio terapéutico.</p>
+        </div>
+
+        <div class="servicio-card light" style="background:var(--peach-300);">
+          <div class="servicio-icon"><i data-lucide="footprints" width="26" height="26" style="color:var(--terracotta-600);"></i></div>
+          <h3>Rehabilitación física y funcional</h3>
+          <p>Recupera movilidad y fuerza después de una lesión o cirugía.</p>
+        </div>
+
+        <div class="servicio-card light" style="background:var(--slate-300);">
+          <div class="servicio-icon"><i data-lucide="zap" width="26" height="26" style="color:var(--slate-600);"></i></div>
+          <h3>Readaptación deportiva y descarga muscular</h3>
+          <p>Vuelve a entrenar sin dolor, con un trabajo enfocado en tu deporte.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="como-funciona">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">— Cómo funciona —</span>
+        <h2>Agendar tu cita es simple</h2>
+      </div>
+      <div class="pasos-grid">
+        <div class="paso">
+          <div class="paso-num">1</div>
+          <h3>Escríbeme por WhatsApp</h3>
+          <p>Cuéntame cuál es tu diagnóstico y en qué zona de Bogotá te encuentras ubicado.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-num">2</div>
+          <h3>Coordinamos día y hora</h3>
+          <p>Buscamos el horario que mejor se acomode a tu semana.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-num">3</div>
+          <h3>Tu sesión, en casa</h3>
+          <p>Llego a tu domicilio con todo lo necesario para tu tratamiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section id="cobertura">
+    <div class="wrap cobertura-grid">
+      <div class="cobertura-visual">
+        <i data-lucide="map-pin" width="110" height="110"></i>
+      </div>
+      <div class="cobertura-text">
+        <span class="eyebrow">— Zona de cobertura —</span>
+        <h2>Atención a domicilio en Bogotá</h2>
+        <p>Por ahora atiendo en cuatro zonas de la ciudad, para poder darte un espacio tranquilo y a tiempo.</p>
+        <div class="zona-tags">
+          <span class="zona-tag">Zona Occidente</span>
+          <span class="zona-tag">Zona Centro</span>
+          <span class="zona-tag">Zona Norte</span>
+          <span class="zona-tag">Zona Sur</span>
+        </div>
+        <a href="https://wa.me/573216798612?text=Hola%20Laura%2C%20quiero%20saber%20si%20atiendes%20en%20mi%20zona" target="_blank" rel="noopener" class="btn btn-ghost">
+          <i data-lucide="message-circle" width="16" height="16"></i>
+          Pregunta si llego hasta ti
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap cta-box">
+      <span class="script">Agenda tu cita</span>
+      <h2>Tu bienestar no puede esperar</h2>
+      <p>Escríbeme por WhatsApp y te acompaño a encontrar el alivio y la fuerza que tu cuerpo necesita.</p>
+      <a href="https://wa.me/573216798612?text=Hola%20Laura%2C%20quiero%20agendar%20una%20cita%20contigo%20y%20te%20dejo%20una%20imagen%20con%20los%20servicios" target="_blank" rel="noopener" class="btn btn-cream">
+        <i data-lucide="message-circle" width="20" height="20"></i>
+        321 679 86 12
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-brand">Laura Najar</div>
+        <p class="footer-tag">Movimiento que se transforma en bienestar.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact-row"><i data-lucide="phone" width="16" height="16"></i> 321 679 86 12</div>
+        <div class="footer-contact-row"><i data-lucide="map-pin" width="16" height="16"></i> Bogotá, Colombia</div>
+        <a href="https://www.instagram.com/fisioterapeutalauranajar" target="_blank" rel="noopener" class="footer-contact-row" style="color:rgba(255,251,246,0.85);"><i data-lucide="instagram" width="16" height="16"></i> Instagram</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Enlaces</div>
+        <div class="footer-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#cobertura">Cobertura</a>
+          <a href="https://wa.me/573216798612" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/fisioterapeutalauranajar" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Laura Najar — Fisioterapia Pélvica y Rehabilitación.</span>
+      <span>Bogotá, Colombia · Atención a domicilio</span>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/573216798612?text=Hola%20Laura%2C%20quiero%20agendar%20una%20cita%20contigo%20y%20te%20dejo%20una%20imagen%20con%20los%20servicios" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" class="wa-float">
+    <i data-lucide="message-circle" width="28" height="28"></i>
+  </a>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
